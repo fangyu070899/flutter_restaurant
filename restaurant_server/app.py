@@ -4,12 +4,13 @@ import certifi
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 from bson import json_util
+import key
 
 app = Flask(__name__)
 
 def get_database():
    db_name = 'Cluster1'
-   CONNECTION_STRING = "mongodb+srv://e14096407:skFvfmBcCx3s4RCy@cluster1.o8941ue.mongodb.net/?retryWrites=true&w=majority"
+   CONNECTION_STRING = key.CONNECTION_STRING
    client = MongoClient(CONNECTION_STRING, tlsCAFile=certifi.where())
    return client[db_name]
 
